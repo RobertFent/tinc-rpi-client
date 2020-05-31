@@ -1,0 +1,10 @@
+tinc:
+  image: robertfent1/tinc-rpi-client
+  ports:
+    - "655:655/tcp"
+    - "655:655/udp"
+  cap_add:
+    - NET_ADMIN
+  dns: 8.8.8.8
+  restart: always
+  container_name: tinc-rpi-client

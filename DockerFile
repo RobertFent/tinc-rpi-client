@@ -1,0 +1,15 @@
+FROM hypriot/rpi-alpine-scratch
+
+RUN apk add --no-cache iptables tinc
+
+COPY docker-entrypoint.sh /entrypoint.sh
+COPY tinc /etc/tinc
+
+VOLUME /etc/tinc
+
+ENV NETNAME=netname \
+    VERBOSE=2
+
+EXPOSE 655/tcp 655/udp
+
+ENTRYPOINT ["/entrypoint.sh"]
